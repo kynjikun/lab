@@ -1,0 +1,7 @@
+# Cheatsheet related to ssh
+
+# ssh port forwarding
+
+syntax: ssh -L [local_port]:[remote_host]:[remote_port] [username]@[ssh_server]
+sample: ssh -L 8080:localhost:80 user@remote.example.com
+usage: when you want to access your remote server hosting your application but ahaven't setup yet secure http then you can use this approach to access the remote application and proxy it securely to your local network where everyone one in the network could access but take note though it's not encrypted in the local network so please remember that
