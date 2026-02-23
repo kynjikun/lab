@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: nginx
+    method: fromYaml
+  name: nginx-ngeks
+spec:
+  containers:
+  - image: nginx
+    name: nginx
+    resources: {}
