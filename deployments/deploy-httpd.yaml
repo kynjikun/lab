@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: test-deployment
+  name: test-deployment
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: test-deployment
+  strategy: 
+    type: RollingUpdate
+    rollingUpdate:   
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: test-deployment
+    spec:
+      containers:
+        - image: httpd:alpine3.18
+          name: httpd
+          command: ["/bin/sh", "-c"] # testing to trigger a fail
+          args: ["sleep 3; exit 1"]  # til here testing
