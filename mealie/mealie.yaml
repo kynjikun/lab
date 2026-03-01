@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: deploy-mealie
+  name: deploy-mealie
+  namespace: mealie
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deploy-mealie
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: deploy-mealie
+    spec:
+      containers:
+      - image: ghcr.io/mealie-recipes/mealie:v3.10.2
+        name: mealie
+        ports:
+          - containerPort: 9000
